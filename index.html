@@ -19,6 +19,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            position: relative;
         }
 
         h1 {
@@ -75,6 +76,32 @@
             font-weight: bold;
             margin: 15px 0;
         }
+
+        #muteButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border: none;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            background: none;
+            background-color: transparent;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #muteButton img {
+            width: 100%;
+            height: auto;
+        }
+
+        #muteButton:hover {
+            background-color: transparent;
+        }
     </style>
     <script>
         function countdown() {
@@ -96,15 +123,36 @@
                 }
             }, 1000);
         }
+
         window.onload = countdown;
+
+        let isMuted = false;
+        function toggleMute() {
+            const audio = document.getElementById("backgroundMusic");
+            const muteButton = document.getElementById("muteButton");
+            const muteIcon = document.getElementById("muteIcon");
+            if (isMuted) {
+                audio.muted = false;
+                muteIcon.src = "images/sound-icon.png";
+            } else {
+                audio.muted = true;
+                muteIcon.src = "images/mute-icon.png";
+            }
+            isMuted = !isMuted;
+        }
     </script>
 </head>
 
 <body>
-    <audio autoplay loop>
+    <audio id="backgroundMusic" autoplay loop>
         <source src="music/Fall.mp3" type="audio/mp3">
         Seu navegador não suporta o elemento de áudio.
     </audio>
+
+    <button id="muteButton" onclick="toggleMute()">
+        <img id="muteIcon" src="images/sound-icon.png" alt="Mute/Unmute">
+    </button>
+
     <div class="container">
         <h1>Convite Especial!!!</h1>
         <img src="images/Chris.png" alt="">
