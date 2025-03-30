@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/cat-icon.png" type="image/png">
+    <title>Convite Aniversário da Chris</title>
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+            text-align: center;
+            background: url('images/background.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #814a35;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 20px;
+            line-height: 1.5;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #814a35;
+        }
+
+        a:hover {
+            color: #9e6a45;
+        }
+
+        .container {
+            max-width: 600px;
+            background: url('images/container-bg.png') no-repeat center center;
+            background-size: 100% 100%;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .banner {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .button {
+            display: inline-block;
+            margin: 10px;
+            padding: 20px 20px;
+            background: url('images/button.png') no-repeat center;
+            background-size: 100% 100%;
+            color: #814a35;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            color: #9e6a45;
+            background: url('images/button-hover.png') no-repeat center;
+            background-size: 100% 100%;
+        }
+
+        #countdown {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+    </style>
+    <script>
+        function countdown() {
+            const eventDate = new Date("May 2, 2025 19:00:00").getTime();
+            const timer = setInterval(function () {
+                const now = new Date().getTime();
+                const distance = eventDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown").innerHTML = `Faltam só ${days}d ${hours}h ${minutes}m ${seconds}s !`;
+
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById("countdown").innerHTML = "Chegou o grande dia!";
+                }
+            }, 1000);
+        }
+        window.onload = countdown;
+    </script>
+</head>
+
+<body>
+    <audio autoplay loop>
+        <source src="music/Fall.mp3" type="audio/mp3">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+    <div class="container">
+        <h1>Convite Especial!!!</h1>
+        <img src="images/Chris.png" alt="">
+        <p>Venha celebrar meu aniversário com muito Stardew Valley, boa comida e diversão!</p>
+        <p><strong>📅 Data:</strong> 02/05/2025 às 19h</p>
+        <p><strong>📍 Local:</strong> <a href="https://goo.gl/maps/z3Gf6yH1JZtCPX9Q7" target="_blank">Benner Sistemas - Rua Itajaí, 2975, Vorstadt, Blumenau - SC</a></p>
+        <p id="countdown"></p>
+        <a href="https://wa.me/554796072024?text=OIE%2C+quero+confirmar+minha+presença+no+aniversário!<3<3<3" class="button">Confirmar Presença</a>
+        <br>
+        <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Aniversário+da+Chris <3&dates=20250502T190000Z/20250502T230000Z&details=Venha+celebrar+meu+aniversário+com+muito+Stardew+Valley!&location=Benner+Sistemas,+Rua+Itajaí,+2975,+Vorstadt,+Blumenau,+SC" class="button" target="_blank">Adicionar ao Google Agenda</a>
+        <br>
+    </div>
+</body>
+
+</html>
