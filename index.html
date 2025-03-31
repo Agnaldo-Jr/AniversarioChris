@@ -2,16 +2,26 @@
 <html lang="pt-BR">
 
 <head>
+    <title>Convite Aniversário da Chris</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Convite de Aniversário da Chris *-*" />
+    <meta property="og:description" content="Venha celebrar meu aniversário com muito Stardew Valley, boa comida e diversão!" />
+    <meta property="og:image" content="/assets/images/preview.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:url" content="https://agnaldo-jr.github.io/AniversarioChris/" />
+    <meta property="og:site_name" content="Convite Aniversário da Chris" />
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="icon" href="images/cat-icon.png" type="image/png">
-    <title>Convite Aniversário da Chris</title>
+    <link rel="icon" href="assets/images/cat-icon.png" type="image/png">
     <style>
         body {
             font-family: 'Press Start 2P', cursive;
             text-align: center;
-            background: url('images/background.jpg') no-repeat center center fixed;
+            background: url('assets/images/background.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #814a35;
             display: flex;
@@ -21,12 +31,13 @@
             margin: 0;
             padding: 10px;
             box-sizing: border-box;
+            cursor: url('/assets/images/cursor.png'),auto;
         }
 
         .container {
             max-width: 90%;
             width: 600px;
-            background: url('images/container-bg.png') no-repeat center center;
+            background: url('assets/images/container-bg.png') no-repeat center center;
             background-size: 100% 100%;
             padding: 20px;
             border-radius: 10px;
@@ -48,19 +59,27 @@
 
         a:hover {
             color: #9e6a45;
+            cursor: url('http://www.rw-designer.com/cursor-extern.php?id=152389'), auto;
         }
 
         .button {
             display: inline-block;
             margin: 10px;
             padding: 15px 15px;
-            background: url('images/button.png') no-repeat center;
+            background: url('assets/images/button.png') no-repeat center;
             background-size: 100% 100%;
             color: #814a35;
             text-decoration: none;
             font-weight: bold;
             border-radius: 5px;
             font-size: 12px;
+        }
+
+        .button:hover {
+            background: url('assets/images/button-hover.png') no-repeat center;
+            background-size: 100% 100%;
+            color: #9e6a45;
+            cursor: url('http://www.rw-designer.com/cursor-extern.php?id=152389'), auto;
         }
 
         #countdown {
@@ -79,8 +98,8 @@
             cursor: pointer;
             background: none;
             background-color: transparent;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -90,21 +109,25 @@
             width: 100%;
             height: auto;
         }
+
+        #muteButton:hover {
+            cursor: url('http://www.rw-designer.com/cursor-extern.php?id=152389'), auto;
+        }
     </style>
 </head>
 
 <body>
     <audio id="backgroundMusic" autoplay loop>
-        <source src="music/Fall.mp3" type="audio/mp3">
+        <source src="assets/music/fall.mp3" type="audio/mp3">
     </audio>
 
     <button id="muteButton" onclick="toggleMute()">
-        <img id="muteIcon" src="images/sound-icon.png" alt="Mute/Unmute">
+        <img id="muteIcon" src="assets/images/sound-icon.png" alt="Mute/Unmute">
     </button>
 
     <div class="container">
         <h1>Convite Especial!!!</h1>
-        <img src="images/Chris.png" alt="" style="max-width: 100%; height: auto;">
+        <img src="assets/images/Chris.png" alt="" style="max-width: 100%; height: auto;">
         <p>Venha celebrar meu aniversário com muito Stardew Valley, boa comida e diversão!</p>
         <p><strong>📅 Data:</strong> 02/05/2025 às 19h</p>
         <p><strong>📍 Local:</strong> <a href="https://maps.app.goo.gl/gw4DGWo1zkU5b8UZ9" target="_blank">Benner Sistemas - Rua Itajaí, 2975, Vorstadt, Blumenau - SC</a></p>
@@ -140,10 +163,10 @@
         const muteIcon = document.getElementById("muteIcon");
         if (isMuted) {
             audio.muted = false;
-            muteIcon.src = "images/sound-icon.png";
+            muteIcon.src = "assets/images/sound-icon.png";
         } else {
             audio.muted = true;
-            muteIcon.src = "images/mute-icon.png";
+            muteIcon.src = "assets/images/mute-icon.png";
         }
         isMuted = !isMuted;
     }
