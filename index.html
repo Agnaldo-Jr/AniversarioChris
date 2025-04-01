@@ -117,7 +117,7 @@
 </head>
 
 <body>
-    <audio id="backgroundMusic" autoplay loop>
+    <audio id="backgroundMusic" preload="auto" autoplay loop>
         <source src="assets/music/fall.mp3" type="audio/mp3">
     </audio>
 
@@ -128,7 +128,7 @@
     <div class="container">
         <h1>Convite Especial!!!</h1>
         <img src="assets/images/Chris.png" alt="" style="max-width: 100%; height: auto;">
-        <p>Traga sua bebida digna do Saloon!</p>
+        <p>Traga sua bebida preferida para o Saloon!</p>
         <p>Venha celebrar meu aniversário com muito Stardew Valley, boa comida e diversão!</p>
         <p><strong>📅 Data:</strong> 02/05/2025 às 19h</p>
         <p><strong>📍 Local:</strong> <a href="https://maps.app.goo.gl/gw4DGWo1zkU5b8UZ9" target="_blank">Benner Sistemas - Rua Itajaí, 2975, Vorstadt, Blumenau - SC</a></p>
@@ -171,6 +171,37 @@
         }
         isMuted = !isMuted;
     }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        let audio = document.getElementById("backgroundMusic");
+
+        // Tenta dar play automaticamente
+        let playPromise = audio.play();
+
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                console.log("Música iniciada com sucesso.");
+            }).catch(() => {
+                console.log("Autoplay bloqueado. Exibindo botão...");
+                let btn = document.createElement("button");
+                btn.id = "MusicButton";
+                btn.innerText = "Clique para ativar a música 🎵🥲";
+                btn.style.position = "fixed";
+                btn.style.top = "20px";
+                btn.style.left = "50%";
+                btn.style.transform = "translateX(-50%)";
+                btn.style.padding = "10px";
+                btn.style.fontSize = "16px";
+                btn.style.zIndex = "1000";
+                document.body.appendChild(btn);
+
+                btn.addEventListener("click", function () {
+                    audio.play();
+                    btn.remove();
+                });
+            });
+        }
+    });
 </script>
 
 </html>
